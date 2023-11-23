@@ -27,14 +27,14 @@ class ContactUsModal(Form):
     def close_button(self) -> Button:
         return self._form_element.find_child_element(
             Button,
-            Locator(By.CSS_SELECTOR, ".button-reset"),
+            Locator.by_css_selector(".button-reset"),
             "Close button"
         )
 
     def get_text_field(self, name: ContactUsTextField) -> TextBox:
         return self._form_element.find_child_element(
             TextBox,
-            Locator(By.NAME, name.value),
+            Locator.by_name(name.value),
             f"TextBox: {name}"
         )
 
@@ -42,6 +42,6 @@ class ContactUsModal(Form):
     def attach_file_input(self):
         return self._form_element.find_child_element(
             TextBox,
-            Locator(By.NAME, "PROPERTY_FILE_11_0"),
+            Locator.by_name("PROPERTY_FILE_11_0"),
             "Attach file"
         )

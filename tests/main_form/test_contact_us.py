@@ -53,7 +53,7 @@ class TestMainForm(TestBase):
 
         with allure.step("Attach file"):
             file_name = "file_to_upload.pdf"
-            test_file = FileReader._FileReader__get_resource_file_path(
+            test_file = FileReader.get_resource_file_path(
                 str(Path("test_data", file_name)),
                 RootPathHelper.calling_root_path(),
             )

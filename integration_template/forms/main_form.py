@@ -22,18 +22,18 @@ class MainForm(Form):
             "Navigation header"
         )
         self.contact_us = self._element_factory.get_button(
-            Locator(By.CLASS_NAME, "header__btn-row"),
+            Locator.by_class_name("header__btn-row"),
             "Contact US"
         )
 
     def nav_menu_buttons(self) -> List[Button]:
         return self.label_nav_header.find_child_elements(
             Button,
-            Locator(By.CLASS_NAME, "nav__list-link"),
+            Locator.by_class_name("nav__list-link"),
         )
 
     def type_of_testing_button(self, type_of_testing: TypeOfTesting):
         return self._element_factory.get_button(
-            Locator(By.XPATH, f"//li[@class='enumeration__item']/a[@href='{type_of_testing.value}']"),
+            Locator.by_xpath(f"//li[@class='enumeration__item']/a[@href='{type_of_testing.value}']"),
             type_of_testing.name,
         )
