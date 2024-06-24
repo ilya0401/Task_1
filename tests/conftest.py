@@ -14,6 +14,8 @@ from integration_template.browsers.custom_startup import CustomStartup
 @pytest.fixture(scope="session", autouse=True)
 def setup_session(request):
     # TODO: workaround to set calling root path, because pytest runs from the root dir
+    # conftest.py should be in the tests folder. If it is moved to another level,
+    # then you need to set os.chdir(work_dir) differently without RootPathHelper.current_root_path(__file__)
     work_dir = RootPathHelper.current_root_path(__file__)
     os.chdir(work_dir)
     Logger.info(f'Setting work_dir: {work_dir}')
