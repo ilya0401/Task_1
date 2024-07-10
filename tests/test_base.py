@@ -1,6 +1,6 @@
 from py_selenium_auto.browsers.browser_services import BrowserServices
 
-from integration_template.configurations.configuration import Configuration
+from resources.configurations.configuration import Configuration
 
 
 class TestBase:

@@ -1,4 +1,4 @@
-from integration_template.configurations.environment import Environment
+from resources.configurations.environment import Environment
 
 
 class Configuration:

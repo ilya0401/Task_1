@@ -1,6 +1,6 @@
 import allure
 
-from integration_template.Pages.main_page import Page1, TypeOfTesting
+from resources.Pages.start_page import Page1, TypeOfTesting
 from tests.test_base import TestBase
 
 

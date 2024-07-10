@@ -4,9 +4,9 @@ import allure
 from py_selenium_auto_core.utilities.file_reader import FileReader
 from py_selenium_auto_core.utilities.root_path_helper import RootPathHelper
 
-from integration_template.forms.contact_us_modal import ContactUsModal, ContactUsTextField
-from integration_template.forms.main_form import MainForm
-from integration_template.models.contact_us_info import ContactUsInfo
+from resources.forms.contact_us_modal import ContactUsModal, ContactUsTextField
+from resources.forms.main_form import MainForm
+from resources.models.contact_us_info import ContactUsInfo
 from tests.test_base import TestBase
 
 
