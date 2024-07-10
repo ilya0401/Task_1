@@ -5,7 +5,7 @@ class Configuration:
 
     @classmethod
     def start_url(cls):
-        return Environment.current_environment().get("startUrl")
+        return Environment.current_environment().get("https://userinyerface.com/")
 
     @classmethod
     def api_url(cls):

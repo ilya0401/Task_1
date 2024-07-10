@@ -1,21 +1,25 @@
 import allure
 
-from integration_template.forms.main_form import MainForm, TypeOfTesting
+from integration_template.Pages.main_page import Page1, TypeOfTesting
 from tests.test_base import TestBase
 
 
 class TestMainForm(TestBase):
-    main_form = MainForm()
+    page1 = Page1()
 
     def setup(self):
-        with allure.step("Go to main page"):
+        with allure.step("Go to start page"):
             self.go_to_start_page()
 
-        with allure.step("Main page is displayed"):
-            assert self.main_form.state.is_displayed()
-            assert self.main_form.label_nav_header.state.wait_for_displayed()
+        with allure.step("Start page is displayed"):
+            assert self.page1.state.is_displayed() # проверяю что страница загрузилась
+            assert self.page1.HERE_BTN.state.wait_for_displayed() # проверяю что нужная кнопка появилась / прогрузилась
+            # assert self.main_form.label_nav_header.state.wait_for_displayed() - было так
 
     def test_main_page(self):
+        # тут пишу код проверки, шаги / действия с UI
+
+
         with allure.step("Check Navigation menu items"):
             assert len(self.main_form.nav_menu_buttons()) == 4
 
