@@ -1,12 +1,14 @@
 from enum import Enum
 from typing import List
 
+
 from py_selenium_auto.elements.button import Button
 from py_selenium_auto.forms.form import Form
 from py_selenium_auto_core.locator.locator import Locator
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from py_selenium_auto_core.elements.element_factory import ElementFactory
+from resources.Pages.generate_creds import Generate_Creds
 
 import time
 
@@ -51,15 +53,16 @@ class Login_Form(Form):
     #проинициализировал атрибуты класса
     # теперь создать методы
 
+
     def fill_passwd_fld(self):
         self.__passwd_fld.click()
         self.__passwd_fld.clear()
-        self.__passwd_fld.send_keys("QwertyP1234") # убрать хардкод
+        self.__passwd_fld.send_keys(Generate_Creds.generate_random_password()) # убрать хардкод
 
     def fill_email(self):
         self.__your_email_fld.click()
         self.__your_email_fld.clear()
-        self.__passwd_fld.send_keys("testmail1")
+        self.__passwd_fld.send_keys(Generate_Creds.generate_random_name())
 
 # добавить декоратор
 
@@ -72,6 +75,11 @@ class Login_Form(Form):
         self.__dropdwn_fld.click()
         self.__dropdwn_value.click()
 
+    BUTTON_FORMAT = "//Button[text = '{}']" # описал шаблон локатора, пользую при создании объекта
+
+    def click_button_by_name(self, name: ROOT_DOMAIN):
+        self._element_factory.get_button(Locator(By.XPATH, self.BUTTON_FORMAT.format(name.value)), name.value).click() # сразу создал и проинициализировал кнопку через шаблон
+                                                            # значение получающееся в переменной BUTTON_FORMAT - локатор с использованием текста из ENUM
         # проставить про выбор значения через Enum
 
     def click_check_box(self):

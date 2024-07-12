@@ -2,6 +2,7 @@ import allure
 
 from resources.Pages.start_page import Start_Page
 from resources.Pages.login_form import Login_Form
+from resources.Pages.login_form import ROOT_DOMAIN
 from tests.test_base import TestBase
 from resources.Pages.start_page import TypeOfTesting
 
@@ -30,4 +31,6 @@ class Test_main_work_flow(TestBase):
         self.login_page.choose_root_domain()
         self.login_page.click_check_box()
         self.login_page.click_next()
+
+        self.login_page.click_button_by_name(ROOT_DOMAIN.COM)
 
