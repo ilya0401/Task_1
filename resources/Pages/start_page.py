@@ -12,7 +12,8 @@ class TypeOfTesting(Enum):
     Automation = "/services/testing_automation/"
     Mobile = "/services/mobile_application_testing/"
 
-class Start_Page(Form): #класс для описания страницы (а именно стартовой страницы), содержит элементы конкретной страницы. Действия, котрые могу с ними делать
+class Start_Page(Form):
+    #класс для описания страницы (а именно стартовой страницы), содержит элементы конкретной страницы. Действия, котрые могу с ними делать
 
     HERE_BTN = (By.XPATH, "//a[contains(@class, 'start__link')]")
 

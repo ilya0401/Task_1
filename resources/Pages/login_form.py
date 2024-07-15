@@ -8,10 +8,11 @@ from py_selenium_auto_core.locator.locator import Locator
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from py_selenium_auto_core.elements.element_factory import ElementFactory
-from resources.Pages.generate_creds import Generate_Creds
+from resources.Pages.creds_generator import Creds_Generator
 
 import time
 
+BUTTON_FORMAT = "//Button[text = '{}']" # описал шаблон локатора, пользую при создании объекта
 
 class ROOT_DOMAIN(Enum):
     OTHER = "other"
@@ -27,7 +28,7 @@ class ROOT_DOMAIN(Enum):
     #JPG = ".jpg"
 
 
-class Login_Form(Form):
+class Login_form(Form):
 
     PASSWD_FLD = (By.XPATH, '//*[contains(@placeholder, "Choose")]')
     YOUR_EMAIL_FLD = (By.XPATH, '//*[contains(@placeholder, "Your email")]')
@@ -57,12 +58,12 @@ class Login_Form(Form):
     def fill_passwd_fld(self):
         self.__passwd_fld.click()
         self.__passwd_fld.clear()
-        self.__passwd_fld.send_keys(Generate_Creds.generate_random_password()) # убрать хардкод
+        self.__passwd_fld.send_keys(Creds_Generator.generate_random_password()) # убрать хардкод
 
     def fill_email(self):
         self.__your_email_fld.click()
         self.__your_email_fld.clear()
-        self.__passwd_fld.send_keys(Generate_Creds.generate_random_name())
+        self.__passwd_fld.send_keys(Creds_Generator.generate_random_name())
 
 # добавить декоратор
 
@@ -74,8 +75,6 @@ class Login_Form(Form):
     def choose_root_domain(self):
         self.__dropdwn_fld.click()
         self.__dropdwn_value.click()
-
-    BUTTON_FORMAT = "//Button[text = '{}']" # описал шаблон локатора, пользую при создании объекта
 
     def click_button_by_name(self, name: ROOT_DOMAIN):
         self._element_factory.get_button(Locator(By.XPATH, self.BUTTON_FORMAT.format(name.value)), name.value).click() # сразу создал и проинициализировал кнопку через шаблон
