@@ -5,10 +5,12 @@ from resources.Pages.login_form import Login_form
 from resources.Pages.login_form import ROOT_DOMAIN
 from tests.test_base import TestBase
 from resources.Pages.start_page import TypeOfTesting
+from resources.Pages.photo_plus_interest_page import Interest_page
 
 class TestMainWorkFlow(TestBase):
     start_page = Start_Page()
     login_page = Login_form()
+    interest_page = Interest_page()
 
     def setup(self):
         with allure.step("Go to start page"):
@@ -33,4 +35,7 @@ class TestMainWorkFlow(TestBase):
         self.login_page.click_next()
 
         self.login_page.click_button_by_name(ROOT_DOMAIN.COM)
+
+        assert self.interest_page.state.is_displayed()
+        self.interest_page.select_checkboxes()
 
